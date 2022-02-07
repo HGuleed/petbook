@@ -1,3 +1,9 @@
 const User = require("./User");
+const Profile = require("./Profile");
 
-module.exports(User);
+Profile.belongsTo(User, {
+  foreignKey: "profile_id",
+  onDelete: "SET NULL",
+});
+
+module.exports(User, Profile);

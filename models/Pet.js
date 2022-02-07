@@ -1,51 +1,63 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Profile extends Model {}
+class Pet extends Model {}
 
-Profile.init({
+Pet.init({
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
     allowNull: false,
   },
-  user_id: {
+  profile_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: "user",
+      model: "profile",
       key: "id",
     },
   },
-  profile_info_id: {
+  pet_name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      len: [2, 16],
+    },
+  },
+  pet_age: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    references: {
-      model: "profileinfo",
-      key: "id",
+    validate: {
+      isNumeric: true,
     },
   },
-  pet_id: {
+  pet_breed: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      len: [4, 20],
+    },
+  },
+  pet_weight: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    references: {
-      model: "pet",
-      key: "id",
+    validate: {
+      isNumeric: true,
     },
   },
-  post_id: {
-    type: DataTypes.INTEGER,
+  pet_descrip: {
+    type: DataTypes.STRING,
     allowNull: false,
-    references: {
-      model: "post",
-      key: "id",
+    validate: {
+      len: [20, 120],
     },
   },
+
   sequelize,
   timestamps: false,
   freezeTableName: true,
   underscored: true,
-  modelName: "profile",
+  modelName: "pet",
 });
-module.exports = Profile;
+module.exports = Pet;

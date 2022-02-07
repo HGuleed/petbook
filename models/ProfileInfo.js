@@ -15,22 +15,22 @@ ProfileInfo.init(
       type: DataTypes.STRING,
       allowNull: false,
       references: {
-        model: "profile-info",
+        model: "profile",
         key: "id",
       },
     },
-    post_url: {
+    profile_name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isURL: true,
+        len: [2, 30],
       },
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "user",
-        key: "id",
+    profile_descrip: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [30, 160],
       },
     },
   },
@@ -38,7 +38,7 @@ ProfileInfo.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: "post",
+    modelName: "profileinfo",
   }
 );
 

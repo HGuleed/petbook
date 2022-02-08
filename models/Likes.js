@@ -1,31 +1,24 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class ProfileInfo extends Model {}
+class Likes extends Model {}
 
-Post.init(
+// create fields/columns for Likes model
+Likes.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-    },
-    title: {
-      type: DataTypes.STRING,
       allowNull: false,
     },
-    post_url: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isURL: true,
-      },
+    likes: {
+      type: DataTypes.INTEGER,
     },
-    user_id: {
+    post_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "user",
+        model: "profile",
         key: "id",
       },
     },
@@ -34,8 +27,8 @@ Post.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: "post",
+    modelName: "likes",
   }
 );
 
-module.exports = ProfileInfo;
+module.exports = Likes;

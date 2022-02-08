@@ -3,29 +3,32 @@ const sequelize = require("../config/connection");
 
 class ProfileInfo extends Model {}
 
-Post.init(
+ProfileInfo.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-    },
-    title: {
-      type: DataTypes.STRING,
       allowNull: false,
     },
-    post_url: {
+    profile_name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isURL: true,
+        len: [2, 18],
       },
     },
-    user_id: {
+    profile_bio: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [15, 130],
+      },
+    },
+    profile_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "user",
+        model: "profile",
         key: "id",
       },
     },

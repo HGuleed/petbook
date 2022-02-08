@@ -42,14 +42,14 @@ Profile.init({
       key: "id",
     },
   },
-  likes_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: "likes",
-      key: "id",
-    },
-  },
+  // likes_id: {
+  //   type: DataTypes.INTEGER,
+  //   allowNull: false,
+  //   references: {
+  //     model: "likes",
+  //     key: "id",
+  //   },
+  // },
 
   sequelize,
   timestamps: false,

@@ -35,13 +35,27 @@ User.init(
         len: [6, 12],
       },
     },
-    // profile_id: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: "profile",
-    //     key: "id",
-    //   },
-    // },
+    profile_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "profile",
+        key: "id",
+      },
+    },
+    post_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "post",
+        key: "id",
+      },
+    },
+    pet_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "pet",
+        key: "id",
+      },
+    },
   },
   // {
   //   hooks: {

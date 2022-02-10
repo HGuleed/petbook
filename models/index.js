@@ -1,10 +1,7 @@
 const User = require("./User");
 const Profile = require("./Profile");
-const ProfileInfo = require("./ProfileInfo");
 // const Pet = require("./Pet");
 // const Post = require("./Post");
-// const Comment = require("./Comment");
-// const Likes = require("./Likes");
 
 // Association between User and Profile
 User.hasOne(Profile, {

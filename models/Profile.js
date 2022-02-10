@@ -19,38 +19,21 @@ Profile.init(
         key: "id",
       },
     },
-    profile_info_id: {
-      type: DataTypes.INTEGER,
+
+    profile_name: {
+      type: DataTypes.STRING,
       allowNull: false,
-      references: {
-        model: "profileinfo",
-        key: "id",
+      validate: {
+        len: [2, 18],
       },
     },
-    // pet_id: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   references: {
-    //     model: "pet",
-    //     key: "id",
-    //   },
-    // },
-    // post_id: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   references: {
-    //     model: "post",
-    //     key: "id",
-    //   },
-    // },
-    // likes_id: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   references: {
-    //     model: "likes",
-    //     key: "id",
-    //   },
-    // },
+    profile_bio: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [15, 130],
+      },
+    },
   },
   {
     sequelize,

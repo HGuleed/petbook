@@ -1,6 +1,6 @@
 const User = require("./User");
 const Profile = require("./Profile");
-// const ProfileInfo = require("./ProfileInfo");
+const ProfileInfo = require("./ProfileInfo");
 // const Pet = require("./Pet");
 // const Post = require("./Post");
 // const Comment = require("./Comment");
@@ -17,13 +17,14 @@ Profile.belongsTo(User, {
 });
 
 // Association between Profile and ProfileInfo
-// Profile.hasOne(ProfileInfo, {
-//   foreignKey: "profile_info_id",
-//   onDelete: "SET NULL",
-// });
-// ProfileInfo.belongsTo(Profile, {
-//   foreignKey: "profile_id",
-// });
+Profile.hasOne(ProfileInfo, {
+  foreignKey: "profile_info_id",
+  onDelete: "SET NULL",
+});
+ProfileInfo.belongsTo(Profile, {
+  foreignKey: "profile_id",
+  constraints: false,
+});
 
 // // Association between Profile and Pet
 // Profile.hasMany(Pet, {

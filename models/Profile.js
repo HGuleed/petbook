@@ -19,14 +19,14 @@ Profile.init(
         key: "id",
       },
     },
-    // profile_info_id: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   references: {
-    //     model: "profileinfo",
-    //     key: "id",
-    //   },
-    // },
+    profile_info_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "profileinfo",
+        key: "id",
+      },
+    },
     // pet_id: {
     //   type: DataTypes.INTEGER,
     //   allowNull: false,

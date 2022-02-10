@@ -43,4 +43,5 @@ Profile.init(
     modelName: "profile",
   }
 );
+
 module.exports = Profile;

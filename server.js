@@ -2,16 +2,7 @@ const express = require("express");
 const routes = require("./routes");
 require("dotenv").config();
 const sequelize = require("./config/connection");
-// const sequelize = new Sequelize(
-//   process.env.DB_NAME,
-//   process.env.DB_USER,
-//   process.env.DB_PW,
-//   {
-//     host: "localhost",
-//     dialect: "mysql",
-//     port: 3306,
-//   }
-// );
+const exphbs = require("express-handlebars");
 
 const app = express();
 const PORT = process.env.PORT || 3001;

@@ -37,7 +37,7 @@ router.post("/", (req, res) => {
 });
 
 //Route to update Post
-router.put("/:id", (req, res) => {
+router.put("edit/:id", (req, res) => {
   console.log("id", req.params.id);
   Post.update(
     {
@@ -62,7 +62,7 @@ router.put("/:id", (req, res) => {
 });
 
 //Route to delete Post
-router.delete("/:id", (req, res) => {
+router.delete("delete/:id", (req, res) => {
   console.log(req.params.id);
   Post.destroy({
     where: {

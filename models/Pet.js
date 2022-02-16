@@ -18,6 +18,10 @@ Pet.init(
         len: [2, 16],
       },
     },
+    pet_pic: {
+      type: DataTypes.BLOB,
+      allowNull: true,
+    },
     pet_age: {
       type: DataTypes.INTEGER,
       allowNull: false,

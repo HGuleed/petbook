@@ -5,7 +5,8 @@ async function loginFormHandler() {
   const password = document.querySelector("#inputPassword").value.trim();
 
   if (email && password) {
-    const response = await fetch("/api/user/login", {
+    debugger;
+    const response = await fetch("/login", {
       method: "post",
       body: JSON.stringify({
         email,
@@ -16,7 +17,7 @@ async function loginFormHandler() {
     });
 
     if (response.ok) {
-      document.location.replace("/dashboard/");
+      document.location.replace("/dashboard");
     } else {
       alert(response.statusText);
     }
@@ -48,11 +49,10 @@ async function signupFormHandler(event) {
     }
   }
 }
+const login = document.getElementById("#loginForm");
 
-document
-  .querySelector("#loginForm")
-  .addEventListener("submit", loginFormHandler);
+login.addEventListener("submit", loginFormHandler());
 
-document
-  .querySelector("#signupForm")
-  .addEventListener("submit", signupFormHandler);
+const signup = document.getElementById("#signupForm");
+
+signup.addEventListener("submit", signupFormHandler());

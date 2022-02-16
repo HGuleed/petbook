@@ -32,7 +32,7 @@ router.post("/", (req, res) => {
 });
 
 // Route to Update Pet
-router.put("/:id", (req, res) => {
+router.put("/edit/:id", (req, res) => {
   Pet.update(req.body, {
     where: {
       id: req.params.id,
@@ -53,7 +53,7 @@ router.put("/:id", (req, res) => {
 });
 
 // Route to Delete Pet
-router.delete("/:id", (req, res) => {
+router.delete("/delete/:id", (req, res) => {
   console.log("id", req.params.id);
   Pet.destroy({
     where: {

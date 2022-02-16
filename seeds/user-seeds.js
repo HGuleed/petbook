@@ -5,14 +5,14 @@ const userData = [
     username: "jf",
     email: "jf@goldenbough.edu",
     password: "password123",
-    profile_name: "Jordan Fox",
+    profilename: "Jordan Fox",
     profile_bio: "test bio",
   },
   {
     username: "london",
     email: "jlondon@ualaska.edu",
     password: "password1234",
-    profile_name: "London C",
+    profilename: "London C",
     profile_bio: "test bio",
   },
   //   {
@@ -32,6 +32,6 @@ const userData = [
   //   },
 ];
 
-const seedUsers = () => User.bulkCreate(userData, {individualHooks: true});
+const seedUsers = () => User.bulkCreate(userData, { individualHooks: true });
 
 module.exports = seedUsers;

@@ -13,7 +13,6 @@ router.get("/", (req, res) => {
     });
 });
 
-
 router.post("/login", (req, res) => {
   User.findOne({
     where: {
@@ -40,15 +39,12 @@ router.post("/login", (req, res) => {
   });
 });
 
-
 // Route to Create User
 router.post("/", (req, res) => {
   User.create({
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
-    profile_name: req.body.profileName,
-    profile_bio: req.body.profileBio,
   })
     .then((userDbData) => {
       res.json(userDbData);

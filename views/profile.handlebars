@@ -1,0 +1,11 @@
+{{#if loggedIn}}
+<div class="container mt-5">
+  <h3>{{profile.profile_name}}</h3>
+  <p>{{profile.profile_bio}}</p>
+</div>
+
+<div class="container card-group">
+{{>pet-info as |pet|}}
+    <a href="/pet/edit/{{post.id}}">Edit pet</a>
+</div>
+{{#else}}

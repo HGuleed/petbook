@@ -1,37 +1,52 @@
 const User = require("./User");
-const Profile = require("./Profile");
-const Pet = require("./Pet");
 const Post = require("./Post");
+const Pet = require("./Pet");
+const Comment = require("./Comment");
 
-// Association between User and Profile
-User.hasOne(Profile, {
-  foreignKey: "profile_id",
-  // onDelete: "SET NULL",
-  constraints: false,
-});
-Profile.belongsTo(User, {
+User.hasMany(Pet, {
   foreignKey: "user_id",
-  constraints: false,
+  onDelete: "cascade",
 });
 
-// Association between User and Post
-// User.hasOne(Post, {
-//   foreignKey: "post_id",
-//   onDelete: "SET NULL",
+Pet.belongsTo(User, {
+  foreignKey: "user_id",
+});
+
+Post.belongsTo(User, {
+  foreignKey: "user_id",
+  onDelete: "cascade",
+});
+
+Post.belongsTo(Pet, {
+  foreignKey: "pet_id",
+  onDelete: "cascade",
+});
+
+User.hasMany(Post, {
+  foreignKey: "user_id",
+  onDelete: "cascade",
+});
+
+Pet.hasMany(Post, {
+  foreignKey: "pet_id",
+  onDelete: "cascade",
+});
+
+Post.hasMany(Comment, {
+  foreignKey: "post_id",
+  onDelete: "SET NULL",
+});
+
+Comment.belongsTo(Post, {
+  foreignKey: "post_id",
+});
+module.exports = { User, Post, Pet, Comment };
+
+// User.hasMany(Post, {
+//     foreignKey: 'user_id',
+//     onDelete: "cascade"
 // });
+
 // Post.belongsTo(User, {
-//   foreignKey: "user_id",
-//   constraints: false,
+//     foreignKey: 'user_id',
 // });
-
-// // Association between User and Pet
-// User.hasOne(Pet, {
-//   foreignKey: "pet_id",
-//   onDelete: "SET NULL",
-// });
-// Profile.belongsTo(User, {
-//   foreignKey: "user_id",
-//   constraints: false,
-// });
-
-module.exports = { User, Profile };

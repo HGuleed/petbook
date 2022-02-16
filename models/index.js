@@ -1,66 +1,52 @@
 const User = require("./User");
-const Profile = require("./Profile");
-const ProfileInfo = require("./ProfileInfo");
-const Pet = require("./Pet");
 const Post = require("./Post");
+const Pet = require("./Pet");
 const Comment = require("./Comment");
-const Likes = require("./Likes");
 
-// Association between User and Profile
-User.hasOne(Profile, {
-  foreignKey: "profile_id",
-  onDelete: "SET NULL",
+User.hasMany(Pet, {
+  foreignKey: "user_id",
+  onDelete: "cascade",
 });
-Profile.belongsTo(User, {
+
+Pet.belongsTo(User, {
   foreignKey: "user_id",
 });
 
-// Association between Profile and ProfileInfo
-Profile.hasOne(ProfileInfo, {
-  foreignKey: "profile_info_id",
-  onDelete: "SET NULL",
-});
-ProfileInfo.belongsTo(Profile, {
-  foreignKey: "profile_id",
+Post.belongsTo(User, {
+  foreignKey: "user_id",
+  onDelete: "cascade",
 });
 
-// Association between Profile and Pet
-Profile.hasMany(Pet, {
+Post.belongsTo(Pet, {
   foreignKey: "pet_id",
-  onDelete: "SET NULL",
+  onDelete: "cascade",
 });
 
-Pet.belongsTo(Profile, {
-  foreignKey: "profile_id",
+User.hasMany(Post, {
+  foreignKey: "user_id",
+  onDelete: "cascade",
 });
 
-//Association between Profile and Post
-Profile.hasMany(Post, {
-  foreignKey: "profile_id",
-  onDelete: "SET NULL",
+Pet.hasMany(Post, {
+  foreignKey: "pet_id",
+  onDelete: "cascade",
 });
 
-Post.belongsTo(Profile, {
-  foreignKey: "post_id",
-});
-
-//Associates between Post and Comment
 Post.hasMany(Comment, {
-  foreignKey: "comment_id",
+  foreignKey: "post_id",
   onDelete: "SET NULL",
 });
 
 Comment.belongsTo(Post, {
   foreignKey: "post_id",
 });
+module.exports = { User, Post, Pet, Comment };
 
-//Associates between Post and Likes
-Post.hasOne(Likes, {
-  foreignKey: "post_id",
-  onDelete: "SET NULL",
-});
+// User.hasMany(Post, {
+//     foreignKey: 'user_id',
+//     onDelete: "cascade"
+// });
 
-Likes.belongsTo(Post, {
-  foreignKey: "likes_id",
-});
-module.exports(User, Profile, ProfileInfo, Pet, Post, Comment, Likes);
+// Post.belongsTo(User, {
+//     foreignKey: 'user_id',
+// });

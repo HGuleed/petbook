@@ -3,7 +3,6 @@ const sequelize = require("../config/connection");
 // create our Post model
 class Post extends Model {}
 
-// create fields/columns for Post model
 Post.init(
   {
     id: {
@@ -12,34 +11,28 @@ Post.init(
       autoIncrement: true,
       allowNull: false,
     },
-    post_title: {
+    post_desc: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [5, 40],
       },
     },
-    post_body: {
-      type: DataTypes.STRING,
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "user",
+        key: "id",
+      },
+    },
+    pet_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
-      validate: {
-        len: [1, 140],
-      },
-    },
-    profile_id: {
-      type: DataTypes.INTEGER,
       references: {
-        model: "profile",
-        key: "id",
+          model: 'pet',
+          key: 'id'
       },
-    },
-    comment_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "comment",
-        key: "id",
-      },
-    },
+    }, 
   },
   {
     sequelize,
